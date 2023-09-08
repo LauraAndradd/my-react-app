@@ -3,6 +3,7 @@ import Logo from "../assets/logo-mobile.svg";
 import iconDown from "../assets/icon-chevron-down.svg";
 import iconUp from "../assets/icon-chevron-up.svg";
 import elipsis from "../assets/icon-vertical-ellipsis.svg";
+import HeaderDropdown from './HeaderDropdown';
 
 
 function Header() {
@@ -30,7 +31,7 @@ function Header() {
             {/* Right Side */}
 
             <div className = 'flex space-x-4 items-center md:space-x-6'>
-                <button className='button'>
+                <button className=' hidden md:block button'>
                     + Add New Task
                 </button>
 
@@ -41,6 +42,8 @@ function Header() {
 
             </div>
             </header>
+
+            {openDropdown && <HeaderDropdown setOpenDropdown={setOpenDropdown}/>}
       
         </div>
 
