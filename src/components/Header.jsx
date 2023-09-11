@@ -58,7 +58,7 @@ function Header({setBoardModalOpen, boardModalOpen}) {
 
             {boardModalOpen && <AddEditBoardModal setBoardModalOpen={setBoardModalOpen} type={boadType} />}
 
-            {openAddEditTask && <AddEditTaskModal setOpenAddEditTask={setOpenAddEditTask} device = 'mobile'/>}
+            {openAddEditTask && <AddEditTaskModal setOpenAddEditTask={setOpenAddEditTask} device = 'mobile' type='add'/>}
 
 
       
