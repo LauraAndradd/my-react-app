@@ -12,7 +12,6 @@ function ElipsisMenu({type , setOpenEditModal , setOpenDeleteModal }) {
             onClick={() => {setOpenDeleteModal()}}>
                 Delete {type}
             </p>
-
         </div>
 
     </div>

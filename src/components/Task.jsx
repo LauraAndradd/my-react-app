@@ -39,6 +39,7 @@ function Task({taskIndex, colIndex}) {
             <TaskModal
             colIndex={colIndex}
             taskIndex={taskIndex}
+            setIsTaskModalOpen={setIsTaskModalOpen}
             />
         )
     }
