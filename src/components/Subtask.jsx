@@ -13,7 +13,7 @@ function Subtask({index, taskIndex, colIndex}) {
     const subtask = task.subtasks.find((subtask , i) => i === index)
     const checked = subtask.isCompleted
 
-    const onChange = () => {
+    const onChange = (e) => {
         dispatch(
             boardsSlice.actions.setSubtaskCompleted({index , taskIndex , colIndex})
         )
@@ -27,7 +27,7 @@ function Subtask({index, taskIndex, colIndex}) {
         checked={checked}
         onChange={onChange}
       />
-      <p className={checked && ' line-through opacity-30'}>
+      <p className={checked ? 'line-through opacity-30' : ''}>
         {subtask.title}
       </p>
 

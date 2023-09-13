@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DeleteModal({type, title, onDeleteBtnClick , setIsDeleteModalOpen , }) {
+function DeleteModal({type, title, onDeleteBtnClick , setIsDeleteModalOpen}) {
   return (
     // Modal Container
     <div className='fixed right-0 bottom-0 left-0 top-0 px-2 py-4 overflow-scroll scrollbar-hide z-50 justify-center items-center flex bg-[#00000080] ' 
