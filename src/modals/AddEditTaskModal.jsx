@@ -173,18 +173,18 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
             </div>  
 
             {/*Current Status Section*/}    
-            <div className='mt-8 flex flex-col space-y-3'>
-                <label className='text-sm dark:text-white text-gray-500'>
+            <div className="mt-8 flex flex-col space-y-3">
+                <label className="text-sm dark:text-white text-gray-500">
                     Current Status
                 </label>
                 <select 
                 value={status}
-                onChange={(e) => onChangeStatus(e)}
-                className='select-status flex flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0 border border-gray-300 focus:outline-[#635fc7] outline-none '>
+                onChange={onChangeStatus}
+                className="select-status flex flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0  border border-gray-300 focus:outline-[#635fc7] outline-none">
                     { columns.map((column , index) => (
                         <option value={column.name}
                         key={index}>
-                            {column.name}
+                        {column.name}
                         </option>
                      ))}
                 </select>
@@ -194,16 +194,13 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
                     if(isValid){
                         onSubmit(type)
                         setOpenAddEditTask(false)
+                        type === "edit" && setIsTaskModalOpen(false)
                     }
                 }}
                 className=' w-full items-center text-white bg-[#635fc7] py-2 rounded-full '>
                     { type === 'edit' ? 'Save Edit' : 'Create Task' }
-
                 </button>
-
             </div>   
-
-
         </div>
     </div>
   )

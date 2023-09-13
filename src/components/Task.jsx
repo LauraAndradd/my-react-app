@@ -50,8 +50,7 @@ function Task({taskIndex, colIndex}) {
             taskIndex={taskIndex}
             setIsTaskModalOpen={setIsTaskModalOpen}
             />
-        )
-    }
+        )}
     </div>
   )
 }
