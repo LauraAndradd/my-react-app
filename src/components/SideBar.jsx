@@ -10,7 +10,6 @@ import showSidebarIcon from "../assets/icon-show-sidebar.svg"
 import hideSidebarIcon from "../assets/icon-hide-sidebar.svg"
 import AddEditBoardModal from '../modals/AddEditBoardModal'
 
-
 function SideBar({setIsSideBarOpen, isSideBarOpen}) {
 
   const dispatch = useDispatch()
