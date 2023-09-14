@@ -14,7 +14,7 @@ Para acessar este projeto basta clicar [aqui](https://my-react-app-eight-lilac.v
 
 ## Link para o Projeto 
 
-Uma versão deste projeto está publicada no github pages deste usuário, para acessa-la basta utilizar o link https://esthefanielanza.github.io/react-kanban/
+Uma versão deste projeto está publicada no github pages deste usuário, para acessa-la basta utilizar o link https://github.com/LauraAndradd/my-react-app
 
 
 
