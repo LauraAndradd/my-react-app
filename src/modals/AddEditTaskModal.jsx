@@ -73,7 +73,6 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
 
 
     const onSubmit = (type) => {
-        console.log(type)
         if(type === 'add'){
             dispatch(boardsSlice.actions.addTask({
                 title,
