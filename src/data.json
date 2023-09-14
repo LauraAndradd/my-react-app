@@ -325,7 +325,7 @@
             {
               "title": "Share on Show HN",
               "description": "",
-              "status": "To do",
+              "status": "",
               "subtasks": [
                 {
                   "title": "Draft out HN post",
@@ -344,7 +344,7 @@
             {
               "title": "Write launch article to publish on multiple channels",
               "description": "",
-              "status": "To do",
+              "status": "",
               "subtasks": [
                 {
                   "title": "Write article",

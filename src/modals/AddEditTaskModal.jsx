@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import crossIcon from '../assets/icon-cross.svg'
 import { useSelector, useDispatch } from 'react-redux'
-import boardsSlice from '../redux/boardsSlice'
+import  boardsSlice  from '../redux/boardsSlice';
 
 function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpen , taskIndex , prevColIndex = 0 , }) {
 
@@ -13,6 +13,7 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
     const [isValid, setIsValid] = useState(true)
 
     const board = useSelector((state) => state.boards).find((board) => board.isActive)
+    
     const columns = board.columns
     const col = columns.find((col , index) => index === prevColIndex)
 
@@ -22,8 +23,8 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
     const [newColIndex, setNewColIndex] = useState(prevColIndex)
     const [subtasks, setSubtasks] = useState(
         [
-            { title : '', isCompleted : false , id : uuidv4() },
-            { title : '', isCompleted : false , id : uuidv4() },
+            { title : "", isCompleted : false , id : uuidv4() },
+            { title : "", isCompleted : false , id : uuidv4() },
         ]
     )
 
@@ -70,13 +71,15 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
         return true 
       }
 
+
     const onSubmit = (type) => {
+        console.log(type)
         if(type === 'add'){
             dispatch(boardsSlice.actions.addTask({
                 title,
+                status,
                 description,
                 subtasks,
-                status,
                 newColIndex
             }))
         } else {
@@ -120,7 +123,8 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
                 onChange={(e) => setTitle(e.target.value)} 
                 className='bg-transparent px-4 py-2 outline-none focus:border-0 rounded-md text-sm border border-gray-600 focus:outline-[#635fc7] ring-0 '
                 type="text"
-                placeholder='e.g Take coffee break'/>
+                placeholder='Task Name'
+                id="task-name-input"/>
             </div>
 
             {/*Description*/}
@@ -132,7 +136,7 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
                 value={description} 
                 onChange={(e) => setDescription(e.target.value)} 
                 className='bg-transparent px-4 py-2 outline-none focus:border-0 min-h-[200px] rounded-md text-sm border border-gray-600 focus:outline-[#635fc7] ring-0 '
-                placeholder= "e.g It's always good to take a break."/>
+                placeholder= "Remember not to try to save with empty fields in the subtask. If you don't have any subtasks, delete all fields, otherwise you won't be able to create a task"/>
             </div>
 
             {/*Subtask Section*/}
@@ -151,7 +155,7 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
                             type="text"
                             value={subtask.title} 
                             className='bg-transparent outline-none focus:border-0 border flex-grow px-4 py-2 rounded-md text-sm border-gray-600 focus:outline-[#635fc7]'
-                            placeholder='e.g Take coffee break'/>
+                            placeholder='Subtasks'/>
                             <img onClick={() => {
                                 onDelete(subtask.id)
                             }}
@@ -163,7 +167,7 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
                 <button onClick={() => {
                     setSubtasks((state) => [
                         ...state,
-                        { title : '', isCompleted : false , id : uuidv4() },
+                        { title : "", isCompleted : false , id : uuidv4() },
                     ])
                 }}
                 className='w-full items-center dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] py-2 rounded-full'>
@@ -179,7 +183,7 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
                 </label>
                 <select 
                 value={status}
-                onChange={onChangeStatus}
+                onChange={(e) => onChangeStatus(e)}
                 className="select-status flex flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0  border border-gray-300 focus:outline-[#635fc7] outline-none">
                     { columns.map((column , index) => (
                         <option value={column.name}
@@ -198,7 +202,7 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
                     }
                 }}
                 className=' w-full items-center text-white bg-[#635fc7] py-2 rounded-full '>
-                    { type === 'edit' ? 'Save Edit' : 'Create Task' }
+                    { type === "edit" ? 'Save Edit' : 'Create Task' }
                 </button>
             </div>   
         </div>

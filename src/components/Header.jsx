@@ -33,7 +33,7 @@ function Header({setBoardModalOpen, boardModalOpen}) {
         setIsElipsisOpen(false)
     }
 
-    const onDeleteBtnClick = () => {
+    const onDeleteBtnClick = (e) => {
         dispatch(boardsSlice.actions.deleteBoard())
         dispatch(boardsSlice.actions.setBoardActive({index : 0}))
         setIsDeleteModalOpen(false)
@@ -67,11 +67,13 @@ function Header({setBoardModalOpen, boardModalOpen}) {
 
             <div className = 'flex space-x-4 items-center md:space-x-6'>
                 <button 
+                className=' hidden md:block button'
                 onClick={() => {
                     setOpenAddEditTask(state => !state)
-                }}
-                className=' hidden md:block button'>
+                }} 
+                >
                     + Add New Task
+                    
                 </button>
 
                 <button 
@@ -87,14 +89,14 @@ function Header({setBoardModalOpen, boardModalOpen}) {
                     setIsElipsisOpen(state => !state)
                 }} alt="elipsis" className='cursor-pointer h-6' />
 
-                {isElipsisOpen && <ElipsisMenu setOpenDeleteModal={setOpenDeleteModal} setOpenEditModal={setOpenEditModal} type='Boards' />}
+                {isElipsisOpen && <ElipsisMenu type='Boards' setOpenDeleteModal={setOpenDeleteModal} setOpenEditModal={setOpenEditModal} />}
 
             </div>
             </header>
 
             {openDropdown && <HeaderDropdown setBoardModalOpen={setBoardModalOpen} setOpenDropdown={setOpenDropdown}/>}
 
-            {boardModalOpen && <AddEditBoardModal setBoardModalOpen={setBoardModalOpen} type={boadType} />}
+            {boardModalOpen && <AddEditBoardModal type={boadType} setBoardModalOpen={setBoardModalOpen} />}
 
             {openAddEditTask && <AddEditTaskModal setOpenAddEditTask={setOpenAddEditTask} device = 'mobile' type='add'/>}
 
