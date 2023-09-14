@@ -17,7 +17,7 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
     const columns = board.columns
     const col = columns.find((col , index) => index === prevColIndex)
 
-    const task = col ? col.tasks.find((task , index ) => index === taskIndex) : []
+    const task = col ? col.tasks.find((task, index) => index === taskIndex) : [];
 
     const [status, setStatus] = useState(columns[prevColIndex].name)
     const [newColIndex, setNewColIndex] = useState(prevColIndex)
@@ -182,7 +182,7 @@ function AddEditTaskModal({type, device , setOpenAddEditTask , setIsTaskModalOpe
                 </label>
                 <select 
                 value={status}
-                onChange={(e) => onChangeStatus(e)}
+                onChange={onChangeStatus}
                 className="select-status flex flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0  border border-gray-300 focus:outline-[#635fc7] outline-none">
                     { columns.map((column , index) => (
                         <option value={column.name}

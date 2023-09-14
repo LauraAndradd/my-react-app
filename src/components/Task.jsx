@@ -39,7 +39,10 @@ function Task({taskIndex, colIndex}) {
         <p className=" font-bold tracking-wide ">{task.title}</p>
 
         <p className=" font-bold text-xs tracking-tighter mt-2 text-gray-500">
-          {completed} of {subtasks.length} completed tasks
+          {completed} of {subtasks.length} completed 
+        </p>
+        <p className=" font-bold text-xs tracking-tighter mt-2 text-gray-500">
+         Tag: {colIndex}{taskIndex}
         </p>
 
     </div>
