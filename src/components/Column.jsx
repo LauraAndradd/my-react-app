@@ -20,8 +20,8 @@ function Column({colIndex}) {
     const [color, setColor] = useState(null)
 
     const dispatch = useDispatch()
-    const boards = useSelector(state => state.boards)
-    const board = boards.find(board => board.isActive)
+    const boards = useSelector((state) => state.boards)
+    const board = boards.find((board) => board.isActive === true)
     const col = board.columns.find((col , i) => i === colIndex)
 
     useEffect(() => {

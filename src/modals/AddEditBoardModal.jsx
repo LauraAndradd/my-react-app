@@ -17,7 +17,6 @@ function AddEditBoardModal({setBoardModalOpen , type , }) {
     [
         {name: 'To do' , task : [] , id : uuidv4()},
         {name: 'In progress' , task : [] , id : uuidv4()},
-        {name: 'Done' , task : [] , id : uuidv4()}
     ]
   )
 
@@ -105,8 +104,7 @@ function AddEditBoardModal({setBoardModalOpen , type , }) {
             Board Columns 
         </label>
 
-        {
-          newColumns.map((column , index) => (
+        {newColumns.map((column , index) => (
             <div key={index} className='flex items-center w-full'>
               <input 
               className='bg-transparent outline-none focus:border-0 border flex-grow px-4 py-2 rounded-md text-sm border-gray-600 focus:outline-[#635fc7]'
@@ -133,7 +131,7 @@ function AddEditBoardModal({setBoardModalOpen , type , }) {
         onClick={() => {
           setNewColumns((state) => [
             ...state,
-            {name: '' , task : [] , id : uuidv4()}
+            {name: "" , task : [] , id : uuidv4()},
           ])
         }}
         >
