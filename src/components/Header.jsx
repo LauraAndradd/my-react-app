@@ -11,14 +11,14 @@ import ElipsisMenu from './ElipsisMenu';
 import DeleteModal from '../modals/DeleteModal';
 import boardsSlice from '../redux/boardsSlice';
 
-function Header({setBoardModalOpen, boardModalOpen}) {
+function Header({ setBoardModalOpen, boardModalOpen }) {
 
     const dispatch = useDispatch()
     const [openDropdown, setOpenDropdown] = useState(false)
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
     const [openAddEditTask, setOpenAddEditTask] = useState(false)
     const [isElipsisOpen, setIsElipsisOpen] = useState(false)
-    const [boadType , setBoadType ] = useState('add')
+    const [boadType, setBoadType] = useState('add')
 
     const boards = useSelector((state) => state.boards)
     const board = boards.find(board => board.isActive)
@@ -35,7 +35,7 @@ function Header({setBoardModalOpen, boardModalOpen}) {
 
     const onDeleteBtnClick = (e) => {
         dispatch(boardsSlice.actions.deleteBoard())
-        dispatch(boardsSlice.actions.setBoardActive({index : 0}))
+        dispatch(boardsSlice.actions.setBoardActive({ index: 0 }))
         setIsDeleteModalOpen(false)
     }
 
@@ -48,64 +48,64 @@ function Header({setBoardModalOpen, boardModalOpen}) {
     return (
         <div className=" p-4 fixed left-0 bg-white dark:bg-[#2b2c37] z-50 right-0 ">
             <header className=" flex justify-between dark:text-white items-center ">
-            {/* Left Side  */}
-            <div className=" flex items-center space-x-2  md:space-x-4">
-                <img src={Logo} alt=" Logo " className=" h-6 w-6" />
-                <h3 className=" md:text-4xl  hidden md:inline-block font-bold  font-sans">
-                    Kanban
-                </h3>
-                <div className='flex items-center'>
-                <h3 className=" truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans  ">
-                    {board.name}
-                </h3>
-                <img src={openDropdown ? iconUp : iconDown} alt=" dropdown icon" className=" w-3 ml-2 cursor-pointer md:hidden"
-                onClick={onDropdownClick}/>
+                {/* Left Side  */}
+                <div className=" flex items-center space-x-2  md:space-x-4">
+                    <img src={Logo} alt=" Logo " className=" h-6 w-6" />
+                    <h3 className=" md:text-4xl  hidden md:inline-block font-bold  font-sans">
+                        Kanban
+                    </h3>
+                    <div className='flex items-center'>
+                        <h3 className=" truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans  ">
+                            {board.name}
+                        </h3>
+                        <img src={openDropdown ? iconUp : iconDown} alt=" dropdown icon" className=" w-3 ml-2 cursor-pointer md:hidden"
+                            onClick={onDropdownClick} />
+                    </div>
                 </div>
-            </div>
 
-            {/* Right Side */}
+                {/* Right Side */}
 
-            <div className = 'flex space-x-4 items-center md:space-x-6'>
-                <button 
-                className=' hidden md:block button'
-                onClick={() => {
-                    setOpenAddEditTask(state => !state)
-                }} 
-                >
-                    + Add New Task
-                    
-                </button>
+                <div className='flex space-x-4 items-center md:space-x-6'>
+                    <button
+                        className=' hidden md:block button'
+                        onClick={() => {
+                            setOpenAddEditTask(state => !state)
+                        }}
+                    >
+                        + Add New Task
 
-                <button 
-                onClick={() => {
-                    setOpenAddEditTask(state => !state)
-                }}
-                className='button py-1 px-3 md:hidden'>
-                    +
-                </button>
-                <img src={elipsis} onClick={() => {
-                    setBoadType('edit')
-                    setOpenDropdown(false)
-                    setIsElipsisOpen(state => !state)
-                }} alt="elipsis" className='cursor-pointer h-6' />
+                    </button>
 
-                {isElipsisOpen && <ElipsisMenu type='Boards' setOpenDeleteModal={setOpenDeleteModal} setOpenEditModal={setOpenEditModal} />}
+                    <button
+                        onClick={() => {
+                            setOpenAddEditTask(state => !state)
+                        }}
+                        className='button py-1 px-3 md:hidden'>
+                        +
+                    </button>
+                    <img src={elipsis} onClick={() => {
+                        setBoadType('edit')
+                        setOpenDropdown(false)
+                        setIsElipsisOpen(state => !state)
+                    }} alt="elipsis" className='cursor-pointer h-6' />
 
-            </div>
+                    {isElipsisOpen && <ElipsisMenu type='Boards' setOpenDeleteModal={setOpenDeleteModal} setOpenEditModal={setOpenEditModal} />}
+
+                </div>
             </header>
 
-            {openDropdown && <HeaderDropdown setBoardModalOpen={setBoardModalOpen} setOpenDropdown={setOpenDropdown}/>}
+            {openDropdown && <HeaderDropdown setBoardModalOpen={setBoardModalOpen} setOpenDropdown={setOpenDropdown} />}
 
             {boardModalOpen && <AddEditBoardModal type={boadType} setBoardModalOpen={setBoardModalOpen} />}
 
-            {openAddEditTask && <AddEditTaskModal setOpenAddEditTask={setOpenAddEditTask} device = 'mobile' type='add'/>}
+            {openAddEditTask && <AddEditTaskModal setOpenAddEditTask={setOpenAddEditTask} device='mobile' type='add' />}
 
-            {isDeleteModalOpen && <DeleteModal setIsDeleteModalOpen={setIsDeleteModalOpen} onDeleteBtnClick={onDeleteBtnClick} title={board.name} type='board'/>}
+            {isDeleteModalOpen && <DeleteModal setIsDeleteModalOpen={setIsDeleteModalOpen} onDeleteBtnClick={onDeleteBtnClick} title={board.name} type='board' />}
 
 
-      
+
         </div>
-  )
+    )
 }
 
 export default Header

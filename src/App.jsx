@@ -11,8 +11,8 @@ function App() {
   const boards = useSelector((state) => state.boards)
   const activeBoard = boards.find(board => board.isActive)
 
-  if (!activeBoard && boards.length > 0){
-    dispatch(boardsSlice.actions.setBoardActive({index : 0}))
+  if (!activeBoard && boards.length > 0) {
+    dispatch(boardsSlice.actions.setBoardActive({ index: 0 }))
   }
 
   const [boardModalOpen, setBoardModalOpen] = useState(false);
@@ -20,21 +20,21 @@ function App() {
   return (
     <div className='overflow-hidden overflow-x-scroll'>
       <>
-      {boards.length > 0 ?
-      <>
-      {/*Header Section*/}
-      <Header boardModalOpen = {boardModalOpen} setBoardModalOpen = {setBoardModalOpen}/>
+        {boards.length > 0 ?
+          <>
+            {/*Header Section*/}
+            <Header boardModalOpen={boardModalOpen} setBoardModalOpen={setBoardModalOpen} />
 
-      {/*Center Section*/}
-      <Center boardModalOpen = {boardModalOpen} setBoardModalOpen = {setBoardModalOpen}/>
-      
-      </>
-      :
-      <>
-        <EmptyBoard type='add'/>
-      </>
-    }
-      
+            {/*Center Section*/}
+            <Center boardModalOpen={boardModalOpen} setBoardModalOpen={setBoardModalOpen} />
+
+          </>
+          :
+          <>
+            <EmptyBoard type='add' />
+          </>
+        }
+
       </>
     </div>
   )

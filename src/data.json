@@ -2,7 +2,7 @@
   "boards": [
     {
       "name": "Main",
-      "isActive" : false,
+      "isActive": false,
       "columns": [
         {
           "name": "To do",
@@ -286,7 +286,7 @@
     },
     {
       "name": "Marketing",
-      "isActive" : false,
+      "isActive": false,
       "columns": [
         {
           "name": "To do",
